@@ -1,0 +1,680 @@
+<div class="supplements-page">
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="hero-section">
+
+    <div class="hero-content">
+
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        PREMIUM SPORTS NUTRITION
+      </div>
+
+      <h1>
+        FUEL YOUR
+        <span>PERFORMANCE.</span>
+      </h1>
+
+      <p class="hero-description">
+        Premium supplements designed for athletes who
+        train harder, recover faster, and refuse to settle.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          href="#products"
+          class="hero-primary"
+        >
+          Explore Supplements
+          <span>→</span>
+        </a>
+
+        <div class="hero-trust">
+          <span class="trust-icon">✓</span>
+
+          <span>
+            Premium quality
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Stats -->
+
+      <div class="hero-stats">
+
+        <div class="stat">
+
+          <strong>
+            {{ supplements().length }}
+          </strong>
+
+          <span>
+            PRODUCTS
+          </span>
+
+        </div>
+
+
+        <div class="stat-divider"></div>
+
+
+        <div class="stat">
+
+          <strong>
+            100%
+          </strong>
+
+          <span>
+            QUALITY
+          </span>
+
+        </div>
+
+
+        <div class="stat-divider"></div>
+
+
+        <div class="stat">
+
+          <strong>
+            24/7
+          </strong>
+
+          <span>
+            SUPPORT
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Hero visual -->
+
+    <div class="hero-visual">
+
+      <div class="hero-glow"></div>
+
+      <div class="hero-circle">
+
+        <div class="bottle">
+
+          <div class="bottle-cap"></div>
+
+          <div class="bottle-body">
+
+            <div class="bottle-brand">
+              IRON
+              <span>FUEL</span>
+            </div>
+
+            <div class="bottle-title">
+              WHEY
+              <small>PROTEIN</small>
+            </div>
+
+            <div class="bottle-flame">
+              ⚡
+            </div>
+
+            <div class="bottle-info">
+              PREMIUM
+              <br>
+              PERFORMANCE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="floating-tag tag-top">
+        <span>01</span>
+        CLEAN FORMULA
+      </div>
+
+      <div class="floating-tag tag-bottom">
+        <span>⚡</span>
+        BUILT TO PERFORM
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SECTION HEADER
+       ===================================================== -->
+
+  <section
+    class="products-section"
+    id="products"
+  >
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="section-label">
+          THE COLLECTION
+        </span>
+
+        <h2>
+          TRAIN.
+          <span>RECOVER.</span>
+          REPEAT.
+        </h2>
+
+      </div>
+
+
+      <p>
+        Everything you need to push your limits
+        and build your strongest self.
+      </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         LOADING
+         =================================================== -->
+
+    @if (loading()) {
+
+      <div class="loading-grid">
+
+        @for (item of [1, 2, 3, 4]; track item) {
+
+          <div class="skeleton-card">
+
+            <div class="skeleton-image"></div>
+
+            <div class="skeleton-line large"></div>
+
+            <div class="skeleton-line"></div>
+
+            <div class="skeleton-line short"></div>
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+
+    <!-- ===================================================
+         ERROR MESSAGE
+         =================================================== -->
+
+    @if (message()) {
+
+      <div class="message-box">
+
+        <span class="message-icon">
+          !
+        </span>
+
+        <div>
+          <strong>
+            Something went wrong
+          </strong>
+
+          <p>
+            {{ message() }}
+          </p>
+        </div>
+
+      </div>
+
+    }
+
+
+    <!-- ===================================================
+         EMPTY STATE
+         =================================================== -->
+
+    @if (!loading() && supplements().length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◈
+        </div>
+
+        <h3>
+          No supplements yet
+        </h3>
+
+        <p>
+          Your collection is empty.
+          Add your first product below.
+        </p>
+
+      </div>
+
+    }
+
+
+    <!-- ===================================================
+         PRODUCTS GRID
+         =================================================== -->
+
+    @if (!loading() && supplements().length > 0) {
+
+      <div class="products-grid">
+
+        @for (
+          supplement of supplements();
+          track supplement._id
+        ) {
+
+          <article
+            class="product-card"
+          >
+
+            <!-- Product visual -->
+
+            <div class="product-visual">
+
+              <div class="product-number">
+                #{{ $index + 1 }}
+              </div>
+
+              <div
+                class="product-category"
+              >
+                {{ supplement.category }}
+              </div>
+
+
+              <div class="product-bottle">
+
+                <div class="mini-cap"></div>
+
+                <div class="mini-body">
+
+                  <div class="mini-logo">
+                    IRON<span>FUEL</span>
+                  </div>
+
+                  <div class="mini-title">
+                    {{ supplement.category }}
+                  </div>
+
+                  <div class="mini-bolt">
+                    ⚡
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              @if (supplement.stock > 0) {
+
+                <span class="stock-badge in-stock">
+                  <span></span>
+                  IN STOCK
+                </span>
+
+              } @else {
+
+                <span class="stock-badge out-stock">
+                  OUT OF STOCK
+                </span>
+
+              }
+
+            </div>
+
+
+            <!-- Product information -->
+
+            <div class="product-content">
+
+              <div class="product-topline">
+
+                <span>
+                  {{ supplement.flavor || "STANDARD" }}
+                </span>
+
+                <span>
+                  {{ supplement.stock }} LEFT
+                </span>
+
+              </div>
+
+
+              <h3>
+                {{ supplement.name }}
+              </h3>
+
+
+              <p class="product-description">
+                {{ supplement.description }}
+              </p>
+
+
+              <div class="product-bottom">
+
+                <div class="product-price">
+
+                  <small>
+                    EGP
+                  </small>
+
+                  <strong>
+                    {{ supplement.price }}
+                  </strong>
+
+                </div>
+
+
+                <a
+                  [routerLink]="[
+                    '/supplements',
+                    supplement._id
+                  ]"
+                  class="details-button"
+                >
+                  View Details
+                  <span>→</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    }
+
+  </section>
+
+
+  <!-- =====================================================
+       INVENTORY MANAGEMENT
+       ===================================================== -->
+
+  <section class="management-section">
+
+    <div class="management-header">
+
+      <div>
+
+        <span class="section-label">
+          INVENTORY MANAGEMENT
+        </span>
+
+        <h2>
+          Add New
+          <span>Supplement</span>
+        </h2>
+
+      </div>
+
+      <div class="management-badge">
+        <span></span>
+        ADMIN PANEL
+      </div>
+
+    </div>
+
+
+    <form
+      class="supplement-form"
+      (ngSubmit)="saveSupplement()"
+    >
+
+      <!-- Product Name -->
+
+      <div class="form-group">
+
+        <label>
+          Product Name
+        </label>
+
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="form.name"
+          placeholder="e.g. Whey Protein Gold"
+          required
+        >
+
+      </div>
+
+
+      <!-- Category -->
+
+      <div class="form-group">
+
+        <label>
+          Category
+        </label>
+
+        <select
+          name="category"
+          [(ngModel)]="form.category"
+        >
+
+          <option value="Protein">
+            Protein
+          </option>
+
+          <option value="Creatine">
+            Creatine
+          </option>
+
+          <option value="Pre-Workout">
+            Pre-Workout
+          </option>
+
+          <option value="Vitamins">
+            Vitamins
+          </option>
+
+          <option value="Amino Acids">
+            Amino Acids
+          </option>
+
+          <option value="Other">
+            Other
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Price -->
+
+      <div class="form-group">
+
+        <label>
+          Price (EGP)
+        </label>
+
+        <input
+          type="number"
+          name="price"
+          [(ngModel)]="form.price"
+          min="0"
+          placeholder="0"
+          required
+        >
+
+      </div>
+
+
+      <!-- Stock -->
+
+      <div class="form-group">
+
+        <label>
+          Stock
+        </label>
+
+        <input
+          type="number"
+          name="stock"
+          [(ngModel)]="form.stock"
+          min="0"
+          placeholder="0"
+          required
+        >
+
+      </div>
+
+
+      <!-- Flavor -->
+
+      <div class="form-group">
+
+        <label>
+          Flavor
+        </label>
+
+        <input
+          type="text"
+          name="flavor"
+          [(ngModel)]="form.flavor"
+          placeholder="Chocolate"
+        >
+
+      </div>
+
+
+      <!-- Active -->
+
+      <div class="form-group checkbox-group">
+
+        <label class="checkbox-label">
+
+          <input
+            type="checkbox"
+            name="active"
+            [(ngModel)]="form.active"
+          >
+
+          <span class="custom-checkbox"></span>
+
+          <span>
+            Product Active
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- Description -->
+
+      <div class="form-group full-width">
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          name="description"
+          [(ngModel)]="form.description"
+          rows="4"
+          placeholder="Describe the supplement..."
+          required
+        ></textarea>
+
+      </div>
+
+
+      <!-- Buttons -->
+
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="save-button"
+          [disabled]="loading()"
+        >
+
+          <span>
+            {{ editingSupplementId()
+              ? "Update Supplement"
+              : "Add Supplement"
+            }}
+          </span>
+
+          <span class="button-arrow">
+            →
+          </span>
+
+        </button>
+
+
+        @if (editingSupplementId()) {
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+
+        }
+
+      </div>
+
+    </form>
+
+  </section>
+
+
+  <!-- =====================================================
+       BOTTOM CTA
+       ===================================================== -->
+
+  <section class="bottom-cta">
+
+    <div>
+
+      <span class="cta-label">
+        READY TO LEVEL UP?
+      </span>
+
+      <h2>
+        YOUR NEXT
+        <span>PERSONAL BEST</span>
+        STARTS HERE.
+      </h2>
+
+    </div>
+
+
+    <a
+      href="#products"
+      class="cta-button"
+    >
+      Shop The Collection
+      <span>↗</span>
+    </a>
+
+  </section>
+
+</div>

@@ -1,0 +1,92 @@
+/* =========================================================
+   IRONFUEL - GLOBAL STYLES
+   ========================================================= */
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+
+  scroll-padding-top: 90px;
+}
+
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    #f3f3f4;
+
+  color:
+    #151518;
+
+  -webkit-font-smoothing:
+    antialiased;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+
+img {
+  max-width: 100%;
+
+  display: block;
+}
+
+
+::selection {
+  background: #ff4b52;
+
+  color: white;
+}
+
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #101011;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #38383c;
+
+  border-radius: 999px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4b52;
+}

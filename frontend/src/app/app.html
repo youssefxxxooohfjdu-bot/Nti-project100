@@ -1,0 +1,120 @@
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <!-- Brand -->
+    <a
+      routerLink="/supplements"
+      class="brand"
+      aria-label="IRONFUEL Home"
+    >
+
+      <span class="brand-mark">
+        <span>⚡</span>
+      </span>
+
+      <span class="brand-name">
+        IRON<span>FUEL</span>
+      </span>
+
+    </a>
+
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+
+      <a
+        routerLink="/supplements"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+      >
+        <span class="nav-icon">▦</span>
+        Supplements
+      </a>
+
+
+      <a
+        routerLink="/supplements"
+        fragment="products"
+      >
+        <span class="nav-icon">◈</span>
+        Products
+      </a>
+
+    </nav>
+
+
+    <!-- Header status -->
+    <div class="header-status">
+
+      <span class="status-dot"></span>
+
+      <span>
+        PERFORMANCE MODE
+      </span>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main class="main-content">
+
+  <router-outlet />
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+
+        <span class="footer-logo-mark">
+          ⚡
+        </span>
+
+        <strong>
+          IRON<span>FUEL</span>
+        </strong>
+
+      </div>
+
+      <p>
+        Premium sports nutrition
+        for serious performance.
+      </p>
+
+    </div>
+
+
+    <div class="footer-center">
+
+      <span class="footer-line"></span>
+
+      <span>
+        FUEL YOUR PERFORMANCE.
+      </span>
+
+      <span class="footer-line"></span>
+
+    </div>
+
+
+    <div class="footer-copy">
+
+      © 2026 IRONFUEL
+
+    </div>
+
+  </div>
+
+</footer>
+<router-outlet />

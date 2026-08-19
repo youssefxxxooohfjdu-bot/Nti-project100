@@ -1,0 +1,64 @@
+import "dotenv/config";
+
+import app from "./app";
+
+import {
+  connectToDatabase
+} from "./config/database";
+
+
+const port = Number(
+  process.env.PORT ?? 3000
+);
+
+
+const mongoUri =
+  process.env.MONGODB_URI?.trim() || "";
+
+
+if (
+  !mongoUri ||
+  mongoUri === "undefined" ||
+  mongoUri === "null"
+) {
+
+  throw new Error(
+    "MONGODB_URI is required and must be a valid connection string"
+  );
+
+}
+
+
+async function startServer(): Promise<void> {
+
+  await connectToDatabase(
+    mongoUri
+  );
+
+
+  app.listen(
+    port,
+    () => {
+
+      console.log(
+        `Gym Supplements API listening on port ${port}`
+      );
+
+    }
+  );
+
+}
+
+
+startServer().catch(
+  (error: unknown) => {
+
+    console.error(
+      "Failed to start server",
+      error
+    );
+
+    process.exit(1);
+
+  }
+);
